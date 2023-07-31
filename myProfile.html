@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <style>
+        /*.row{
+          box-shadow: 10px 10px 5px;
+        }*/
+        .glass {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-color: #cce0ff;
+            position: relative;
+            overflow: hidden;
+          }
+          .water {
+            width: 100%;
+            height: 0;
+            background-color: #0080ff;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+          }
+    </style>
+</head>
+<body>
+    <!--  Navbar  -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+        <div class="container text-white">
+          <a href="#" class="navbar-brand text-white" >Muscle Booster</a>
+          <button
+            type="button"
+            class="navbar-toggler"
+            data-bs-target="#navbarNav"
+            data-bs-toggle="collapse"
+            aria-controls="navbarNa v"
+            aria-expanded="false"
+            aria-label="Toggle Navbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="mx-auto"></div>
+            <ul class="navbar-nav nav-underline">
+                <li class="nav-item">
+                    <a href="http://127.0.0.1:5500/Main/main1.html" class="nav-link text-white">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://127.0.0.1:5500/exercise.html" class="nav-link text-white">Workout</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                    <a href="" class="nav-link text-white">Login</a>
+                </li> -->
+                <div class="dropdown">
+                  <button class="btn btn-secondary-fade dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Login
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="http://127.0.0.1:5500/Main/login1.html">Sign Up</a></li>
+                    <!-- <li><a class="dropdown-item" href="#">Login</a></li> -->
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">My Profile</a></li>
+                  </ul>
+                </div>
+
+                <li class="nav-item">
+                    <a href="" class="nav-link text-white">Plans</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!--Navbar ends-->
+      
+      <div class="banner-image ">
+        <img src="./images/MyProfile.mp4" alt="" height="400px" width="100%">
+      </div>
+      
+      <div class="container" >
+        <div class="row mt-2">
+            <h1 class="bg-secondary">My Profile</h1>
+        </div>
+        <!--  PERSONAL DETAILS  -->
+        <div class="row bg-info" style="box-shadow: 10px 10px 10px;">
+            <div class="col-md-6">
+                <h3>Name : <span id="profile-name" class="text-white"></span></h3>
+                <h3>Age : <span id="profile-age" class="text-white"></span></h3>
+                <h3>Height : <span id="profile-height" class="text-white"></span> Cm</h3>
+            </div>
+            <div class="col-md-6">
+                <h3>Gender : <span id="profile-gender" class="text-white"></span></h3>
+                <h3>Date Of Birth : <span id="profile-dob" class="text-white"></span></h3>
+                <h3>Weight : <span id="profile-weight" class="text-white"></span> Kg</h3>
+            </div>
+        </div>
+
+        <!--  BMI Calculator  -->
+        <div class="row mt-5">
+            <div class="col-md-6" style="box-shadow: 10px 10px 10px;">
+                
+               
+                <h3 class="text-center">BMI</h3> 
+
+                <h1>BMI Calculator</h1>
+                <label class="form-label" for="weight">Weight (kg):</label>
+                <input type="number" class="form-control" id="weight" />
+                <label class="form-label" for="height">Height (m):</label>
+                <input type="number" class="form-control" id="height" />
+                <button onclick="calculateBMI()" class="btn btn-secondary mt-3">Calculate BMI</button>
+                <div id="resultContainer"></div>
+
+            </div>
+            <div class="col-md-6" style="box-shadow: 10px 10px 10px;">
+                <div class="row">
+                    <h3 class="text-center">Water Tracker</h3>
+                </div>
+                    <div class="row">
+                      <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                          <div class="glass">
+                            <div class="water" id="water"></div>
+                          </div>
+                          <div class="row text-center">
+                            <p id="waterAmount">0 glass</p>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-6">
+                                <button class="button form-control" onclick="decWater()">-</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button class="button form-control" onclick="incWater()">+</button>
+                            </div>
+                          </div>
+                        </div>
+                      <div class="col-md-4"></div>
+                    </div>
+            </div>
+        </div>
+
+        <!--  Extra Workout  -->
+        <div class="row mt-5" style="box-shadow: 10px 10px 10px;">
+          <div class="col">
+          <div class="activities-container" id="todo-list">
+          </div>
+
+          <div class="activity-item">
+            <h2>Workout</h2>
+            <label class="form-label">Name</label>
+            <input type="text" class="form-control" id="workout-name">
+            <label class="form-label">Duration (mins):</label>
+            <input type="number" class="form-control" id="workout-duration">
+            <label class="form-label">Distance (km):</label>
+            <input type="number" class="form-control" id="workout-distance">
+            <label class="form-label">Calories Burned:</label>
+            <input type="number" class="form-control" id="workout-calories">
+            <button onclick="addActivity()" class="btn btn-secondary mt-3">Add</button>
+          </div>
+        </div>
+        </div>
+
+      </div>
+        
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      
+<script>
+    // Inside the DOMContentLoaded event handler
+    //PERSONAL DETAILS THROUGH LOCAL STORAGE 
+    document.addEventListener('DOMContentLoaded', function(){
+      const userDataStr = localStorage.getItem('userData');
+      if(!userDataStr){
+        alert('user data not found');
+        return;
+      }
+      const userData = JSON.parse(userDataStr);
+
+      const profileNameElement = document.getElementById('profile-name');
+      const profileAgeElement = document.getElementById('profile-age');
+      const profileHeightElement = document.getElementById('profile-height');
+      const profileWeightElement = document.getElementById('profile-weight');
+      const profileGenderElement = document.getElementById('profile-gender');
+      const profileDobElement = document.getElementById('profile-dob');
+
+      profileNameElement.innerText = userData.name;
+      profileAgeElement.innerText = userData.age;
+      profileHeightElement.innerText = userData.height;
+      profileWeightElement.innerText = userData.weight;
+      profileDobElement.innerText = formatDate(userData.dob);
+      profileGenderElement.innerText = userData.gender;
+    });
+    
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const formattedDate = `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`;
+      return formattedDate;
+    }
+    
+
+    //BMI CALCULATOR
+    let waterAmount = 0;
+    const maxCapacity = 10; // Maximum capacity of the glass 
+    const waterLevel = document.getElementById('water');
+
+    // Function to update the water level in the circle
+    function updateWaterLevel() {
+     
+        const filledHeight = (waterAmount / maxCapacity) * 100; // Calculate the percentage filled
+        waterLevel.style.height = `${filledHeight}%`; // Set the height of the water div to represent the percentage filled
+        //document.getElementById('waterAmount').innerText = `${waterAmount} glass`; // Update the water amount display
+        document.getElementById('waterAmount').innerText =  waterAmount + "glass";
+      }
+
+    //Function to add water
+    function incWater() {
+        waterAmount += 1; // Add 50 ml of water
+        if (waterAmount > maxCapacity) {
+          waterAmount = maxCapacity; // Cap the water level at the maximum capacity
+        }
+        updateWaterLevel();
+    }
+
+    // Function to remove water
+    function decWater() {
+        waterAmount -= 1; // Remove 50 ml of water
+        if (waterAmount < 0) {
+          waterAmount = 0; // Water level can't be negative
+        }
+        updateWaterLevel();
+    }
+
+    //function to calculate bmi
+    function calculateBMI() {
+        const weight = parseFloat(document.getElementById('weight').value);
+        const height = parseFloat(document.getElementById('height').value);
+  
+        if (isNaN(weight) || isNaN(height) || height <= 0 || weight <= 0) {
+          alert('Please enter valid weight and height.');
+          return;
+        }
+  
+        const bmi = (weight / (height * height)).toFixed(2);
+        const resultContainer = document.getElementById('resultContainer');
+        const bmiElement = document.createElement('p');
+        //bmiElement.textContent = `Your BMI is: ${bmi.toFixed(2)}`;
+        bmiElement.innerText = "Your Bmi is: " + bmi;
+        resultContainer.innerHTML = ''; // Clear previous results
+        resultContainer.appendChild(bmiElement);
+
+        const color = getBMIColor(bmi);
+        resultContainer.style.backgroundColor = color;
+
+        // Function to get the color based on BMI range
+        function getBMIColor(bmi) {
+            if (bmi < 18.5) {
+              return '#FF0000';                 // Red for underweight
+            } else if (bmi >= 18.5 && bmi < 25) {
+              return '#00FF00';                 // Green for healthy weight
+            } else if (bmi >= 25 && bmi < 30) {
+              return '#FFFF00';                 // Yellow for overweight
+            } else {
+              return '#FFA500';                 // Orange for obese (BMI >= 30)
+            }
+        }
+      //Add further
+    }
+      
+    //Function for workout 
+    function addActivity(){
+      //alert('hi');
+      const nameInput = document.getElementById('workout-name').value;
+      const durationInput = document.getElementById('workout-duration').value;
+      const distanceInput = document.getElementById('workout-distance').value;
+      const caloriesInput = document.getElementById('workout-calories').value;
+      console.log(nameInput+durationInput+distanceInput+caloriesInput);
+
+      /*const name = nameInput.value;
+      const duration = durationInput.value;
+      const distance = distanceInput.value;
+      const calories = caloriesInput.value;
+      console.log(name+duration+distance+calories);*/
+    }
+    if(name.trim() && duration && distance && calories){
+      const activityItem = createExtraAct(name, duration, calories);
+      const todoList = document.getElementById('todo-list');
+      todoList.appendChild(activityItem);
+    
+      document.getElementById('workout-name') = '';
+      durationInput = '';
+      distanceInput = '';
+      caloriesInput = '';
+    }else{
+      /*alert('please fill in the table');*/
+    }
+
+    function createExtraAct(name, duration, distance, calories){
+        const activityItem = document.createElement('div');
+        activityItem.classList.add('activity-item' , 'my-3', 'p-3', 'border' , 'border-success', 'rounded');
+
+        const heading = document.createElement('h1');
+        heading.innerText = 'Extra Activities';
+
+        const nameElement = createExtraAct('Name' , name);
+        const durationElement = createExtraAct('Duration' , duration + 'mins');
+        const distanceElement = createExtraAct('Distance' , distance + 'km');
+        const caloriesElement = createExtraAct('Calories Burned' , calories );
+
+        const DeleteButton = document.createElement('button');
+        DeleteButton.innerText = 'Delete';
+        DeleteButton.classList.add('btn', 'btn-danger', 'mx-2');
+        DeleteButton.addEventListener('click' , function(){
+          deleteExtraAct(activityItem);
+        });
+
+        activityItem.appendChild(heading);
+        activityItem.appendChild(nameElement);
+        activityItem.appendChild(durationElement);
+        activityItem.appendChild(distanceElement);
+        activityItem.appendChild(caloriesElement);
+        activityItem.appendChild(DeleteButton);
+
+        return activityItem;
+    }
+
+
+    function createExtAct(key, value){
+      const element = document.createElement('p');
+      element.innerHTML = `<strong>${key}:</strong> ${value}`;
+      //element.innerHTML = key+':' +value;
+      return element;
+    }    
+    function deleteExtraAct(activityItem){
+      const todoList = document.getElementById('todo-list');
+      todoList.removeChild(activityItem);
+    }
+  
+
+  
+</script>
+</body>
+</html>
