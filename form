@@ -1,0 +1,26 @@
+<div class="form-body">
+            <!-- <img src="./images/formBg.jpeg" alt="" height="100%" width="100%" > -->
+            <h1 style="text-align: center;"><b>Login</b></h1>
+            <label class="form-label ">Email</label>
+            <input type="text" class="form-control" placeholder="Email" required autofocus>
+            <label class="form-label ">Password</label>
+            <input type="password" class="form-control" placeholder="password" required autofocus>
+            <label class="form-label">Re-Enter Password</label>
+            <input type="password" class="form-control" id="repass" onchange="change()" placeholder="Re-Enter Password" maxlength="8"size="8">
+            <p id="errorPass"></p>
+
+            <div class="mt-4 text-center pb-2">
+                <input type="Submit" class="btn bg-light">
+                <input type="Reset" class="btn bg-light">
+            </div>
+
+            <div class="login-extra">
+                <h4>or connect with</h4>
+            </div>
+            <div class="login-extra-fields">
+                <a href=""><i class="bi bi-google"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-envelope"></i></a>
+            </div>
+            
+        </div>

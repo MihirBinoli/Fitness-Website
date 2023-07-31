@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reverse Counter Clock</title>
+</head>
+<body>
+  <div id="counter"></div>
+
+
+
+
+
+  <script>
+    function reverseCounterClock(targetDate) {
+      const interval = 1000; // Update every 1 second
+      const counterElement = document.getElementById("counter");
+    
+      // Update the counter every second
+      const updateCounter = setInterval(() => {
+        const now = new Date();
+        const timeDifference = targetDate - now;
+    
+        // Check if the target date has passed
+        if (timeDifference <= 0) {
+          clearInterval(updateCounter);
+          counterElement.innerHTML = "Countdown over!";
+          return;
+        }
+    
+        // Calculate hours, minutes, and seconds
+        const seconds = Math.floor((timeDifference / 1000) % 60);
+    
+        // Format the time display (add leading zeros if needed)
+        const formattedTime = ` ${String(seconds).padStart(2, "0")}`;
+    
+        // Update the counter element with the formatted time
+        counterElement.innerHTML = formattedTime;
+      }, interval);
+    }
+    
+    // Set the target date (change this to your desired end time)
+    const targetDate = new Date("2023-12-31T23:59:59");
+    reverseCounterClock(targetDate);
+    </script>
+    
+</body>
+</html>
